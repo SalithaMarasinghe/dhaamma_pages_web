@@ -1,0 +1,95 @@
+## Project Specification: Dhamma Page
+
+**Title:** Build a Notion-like Notes Website ("Dhamma Page") with Firebase Firestore Backend
+
+---
+
+### Description
+
+Dhamma Page is a website where users can create and manage **Pages**. Each Page contains a **Notion-like text editor** to add structured content blocks such as text, headings, and lists. Users should be able to **CRUD both Pages and the content within them**. The backend will use **Firebase Firestore** for storage and **Firebase Authentication** for user login. Image upload will be ignored for now.
+
+---
+
+### Requirements
+
+#### Frontend
+
+* Framework: **React** (Next.js preferred).
+* UI: Simple, clean design (grid view of Pages).
+* Pages:
+
+  * CRUD functionality (create, read, update, delete Pages).
+  * Each Page opens into a **Notion-like text editor**.
+* Editor:
+
+  * Use **Tiptap** or **Editor.js**.
+  * Supported blocks: paragraph text, headings, bullet/numbered lists.
+  * Users can **CRUD blocks** inside a Page.
+  * Content should be auto-saved to Firestore.
+
+#### Authentication
+
+* Use **Firebase Authentication**.
+* Allow **Google login**.
+* Each user should only see their own Pages and content.
+
+#### Database (Firestore)
+
+Schema suggestion:
+
+```
+users/{userId}/pages/{pageId}
+```
+
+**Page Document (pageId):**
+
+```json
+{
+  "title": "Daily Reflection",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}
+```
+
+**Page Content:**
+Stored as a **JSON document** compatible with Tiptap/Editor.js.
+
+Example:
+
+```json
+{
+  "content": {
+    "type": "doc",
+    "content": [
+      { "type": "heading", "attrs": {"level": 1}, "content": [{ "type": "text", "text": "My Heading" }] },
+      { "type": "paragraph", "content": [{ "type": "text", "text": "Some text here" }] }
+    ]
+  }
+}
+```
+
+---
+
+#### Backend/Logic
+
+* CRUD for Pages (Firestore collection).
+* CRUD for Page Content (stored as JSON).
+* Auto-save editor content every few seconds (or on blur).
+* Protect routes with Firebase Auth so users can only access their own Pages.
+
+---
+
+#### Extra (Optional)
+
+* Search Pages by title.
+* Add a sidebar to navigate between Pages.
+* Dark mode toggle.
+
+---
+
+### Deliverables
+
+* A working **React/Next.js frontend** integrated with Firebase Firestore and Auth.
+* CRUD system for Pages.
+* Notion-like editor inside each Page with CRUD for content.
+* Firestore integration to store structured JSON for editor content.

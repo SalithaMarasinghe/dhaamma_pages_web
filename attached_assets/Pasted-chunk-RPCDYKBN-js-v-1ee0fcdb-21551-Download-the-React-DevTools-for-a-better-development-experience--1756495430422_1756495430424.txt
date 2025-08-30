@@ -1,0 +1,456 @@
+chunk-RPCDYKBN.js?v=1ee0fcdb:21551 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+contentScript.bundle.js:66 [CSC] content script client up.
+ma_payload.js:153 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'getAttribute')
+    at getUserFbFullName (ma_payload.js:153:9)
+    at async addFUserInfo (ma_payload.js:241:17)
+getUserFbFullName @ ma_payload.js:153
+await in getUserFbFullName
+addFUserInfo @ ma_payload.js:241
+await in addFUserInfo
+t @ ma_payload.js:383
+pRunner @ ma_payload.js:387
+(anonymous) @ ma_payload.js:432
+ma_payload.js:153 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'getAttribute')
+    at getUserFbFullName (ma_payload.js:153:9)
+    at async addFUserInfo (ma_payload.js:241:17)
+getUserFbFullName @ ma_payload.js:153
+await in getUserFbFullName
+addFUserInfo @ ma_payload.js:241
+await in addFUserInfo
+e @ ma_payload.js:253
+fRunner @ ma_payload.js:257
+(anonymous) @ ma_payload.js:432
+firebase.ts:106 [2025-08-29T19:23:37.947Z]  @firebase/firestore: Firestore (12.2.0): Uncaught Error in snapshot listener: FirebaseError: [code=permission-denied]: Missing or insufficient permissions.
+defaultLogHandler @ chunk-Q2ZNGHTD.js?v=1ee0fcdb:1211
+error @ chunk-Q2ZNGHTD.js?v=1ee0fcdb:1279
+__PRIVATE_logError @ firebase_firestore.js?v=1ee0fcdb:2626
+error @ firebase_firestore.js?v=1ee0fcdb:15047
+onError @ firebase_firestore.js?v=1ee0fcdb:13870
+__PRIVATE_eventManagerOnWatchError @ firebase_firestore.js?v=1ee0fcdb:13823
+__PRIVATE_removeAndCleanupTarget @ firebase_firestore.js?v=1ee0fcdb:14542
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:14479
+Promise.then
+__PRIVATE_syncEngineRejectListen @ firebase_firestore.js?v=1ee0fcdb:14479
+__PRIVATE_handleTargetError @ firebase_firestore.js?v=1ee0fcdb:13322
+__PRIVATE_onWatchStreamChange @ firebase_firestore.js?v=1ee0fcdb:13323
+onNext @ firebase_firestore.js?v=1ee0fcdb:12981
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12940
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12960
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16051
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16082
+Promise.then
+cc @ firebase_firestore.js?v=1ee0fcdb:16082
+enqueue @ firebase_firestore.js?v=1ee0fcdb:16051
+enqueueAndForget @ firebase_firestore.js?v=1ee0fcdb:16033
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12960
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12940
+u_ @ firebase_firestore.js?v=1ee0fcdb:12553
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12693
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12656
+ab @ firebase_firestore.js?v=1ee0fcdb:950
+F2 @ firebase_firestore.js?v=1ee0fcdb:920
+Z2.ta @ firebase_firestore.js?v=1ee0fcdb:2540
+Rb @ firebase_firestore.js?v=1ee0fcdb:1419
+M2.Y @ firebase_firestore.js?v=1ee0fcdb:1284
+M2.ca @ firebase_firestore.js?v=1ee0fcdb:1215
+ab @ firebase_firestore.js?v=1ee0fcdb:950
+F2 @ firebase_firestore.js?v=1ee0fcdb:920
+Wc @ firebase_firestore.js?v=1ee0fcdb:1954
+h.bb @ firebase_firestore.js?v=1ee0fcdb:1949
+h.Ea @ firebase_firestore.js?v=1ee0fcdb:1946
+Lc @ firebase_firestore.js?v=1ee0fcdb:1846
+h.Pa @ firebase_firestore.js?v=1ee0fcdb:1813
+Promise.then
+Nc @ firebase_firestore.js?v=1ee0fcdb:1804
+h.Sa @ firebase_firestore.js?v=1ee0fcdb:1800
+Promise.then
+h.send @ firebase_firestore.js?v=1ee0fcdb:1781
+h.ea @ firebase_firestore.js?v=1ee0fcdb:1922
+Jb @ firebase_firestore.js?v=1ee0fcdb:1208
+fd @ firebase_firestore.js?v=1ee0fcdb:2341
+h.Fa @ firebase_firestore.js?v=1ee0fcdb:2308
+Da @ firebase_firestore.js?v=1ee0fcdb:669
+Promise.then
+x2 @ firebase_firestore.js?v=1ee0fcdb:663
+ec @ firebase_firestore.js?v=1ee0fcdb:2294
+Rb @ firebase_firestore.js?v=1ee0fcdb:1416
+M2.Y @ firebase_firestore.js?v=1ee0fcdb:1284
+M2.ca @ firebase_firestore.js?v=1ee0fcdb:1215
+ab @ firebase_firestore.js?v=1ee0fcdb:950
+F2 @ firebase_firestore.js?v=1ee0fcdb:920
+Wc @ firebase_firestore.js?v=1ee0fcdb:1954
+h.bb @ firebase_firestore.js?v=1ee0fcdb:1949
+h.Ea @ firebase_firestore.js?v=1ee0fcdb:1946
+Lc @ firebase_firestore.js?v=1ee0fcdb:1846
+h.Pa @ firebase_firestore.js?v=1ee0fcdb:1813
+Promise.then
+Nc @ firebase_firestore.js?v=1ee0fcdb:1804
+h.Sa @ firebase_firestore.js?v=1ee0fcdb:1800
+Promise.then
+h.send @ firebase_firestore.js?v=1ee0fcdb:1781
+h.ea @ firebase_firestore.js?v=1ee0fcdb:1922
+Jb @ firebase_firestore.js?v=1ee0fcdb:1203
+Hb @ firebase_firestore.js?v=1ee0fcdb:1178
+h.Ga @ firebase_firestore.js?v=1ee0fcdb:2228
+Da @ firebase_firestore.js?v=1ee0fcdb:669
+Promise.then
+x2 @ firebase_firestore.js?v=1ee0fcdb:663
+fc @ firebase_firestore.js?v=1ee0fcdb:2172
+h.connect @ firebase_firestore.js?v=1ee0fcdb:2132
+Y2.m @ firebase_firestore.js?v=1ee0fcdb:2488
+Yo @ firebase_firestore.js?v=1ee0fcdb:12650
+send @ firebase_firestore.js?v=1ee0fcdb:12541
+q_ @ firebase_firestore.js?v=1ee0fcdb:12858
+Y_ @ firebase_firestore.js?v=1ee0fcdb:13010
+__PRIVATE_sendWatchRequest @ firebase_firestore.js?v=1ee0fcdb:13266
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:13295
+__PRIVATE_onWatchStreamOpen @ firebase_firestore.js?v=1ee0fcdb:13294
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12936
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12960
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16051
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16082
+Promise.then
+cc @ firebase_firestore.js?v=1ee0fcdb:16082
+enqueue @ firebase_firestore.js?v=1ee0fcdb:16051
+enqueueAndForget @ firebase_firestore.js?v=1ee0fcdb:16033
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12960
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12936
+__ @ firebase_firestore.js?v=1ee0fcdb:12547
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12698
+setTimeout
+T_ @ firebase_firestore.js?v=1ee0fcdb:12697
+j_ @ firebase_firestore.js?v=1ee0fcdb:12969
+G_ @ firebase_firestore.js?v=1ee0fcdb:12933
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12923
+Promise.then
+auth @ firebase_firestore.js?v=1ee0fcdb:12919
+start @ firebase_firestore.js?v=1ee0fcdb:12818
+__PRIVATE_startWatchStream @ firebase_firestore.js?v=1ee0fcdb:13276
+__PRIVATE_remoteStoreListen @ firebase_firestore.js?v=1ee0fcdb:13248
+__PRIVATE_allocateTargetAndMaybeListen @ firebase_firestore.js?v=1ee0fcdb:14313
+await in __PRIVATE_allocateTargetAndMaybeListen
+__PRIVATE_syncEngineListen @ firebase_firestore.js?v=1ee0fcdb:14291
+__PRIVATE_eventManagerListen @ firebase_firestore.js?v=1ee0fcdb:13756
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:17955
+await in (anonymous)
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16051
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16082
+Promise.then
+cc @ firebase_firestore.js?v=1ee0fcdb:16082
+enqueue @ firebase_firestore.js?v=1ee0fcdb:16051
+enqueueAndForget @ firebase_firestore.js?v=1ee0fcdb:16033
+__PRIVATE_firestoreClientListen @ firebase_firestore.js?v=1ee0fcdb:17955
+onSnapshot @ firebase_firestore.js?v=1ee0fcdb:17958
+subscribeToPages @ firebase.ts:106
+(anonymous) @ usePages.tsx:38
+commitHookEffectListMount @ chunk-RPCDYKBN.js?v=1ee0fcdb:16915
+commitPassiveMountOnFiber @ chunk-RPCDYKBN.js?v=1ee0fcdb:18156
+commitPassiveMountEffects_complete @ chunk-RPCDYKBN.js?v=1ee0fcdb:18129
+commitPassiveMountEffects_begin @ chunk-RPCDYKBN.js?v=1ee0fcdb:18119
+commitPassiveMountEffects @ chunk-RPCDYKBN.js?v=1ee0fcdb:18109
+flushPassiveEffectsImpl @ chunk-RPCDYKBN.js?v=1ee0fcdb:19490
+flushPassiveEffects @ chunk-RPCDYKBN.js?v=1ee0fcdb:19447
+performSyncWorkOnRoot @ chunk-RPCDYKBN.js?v=1ee0fcdb:18868
+flushSyncCallbacks @ chunk-RPCDYKBN.js?v=1ee0fcdb:9119
+commitRootImpl @ chunk-RPCDYKBN.js?v=1ee0fcdb:19432
+commitRoot @ chunk-RPCDYKBN.js?v=1ee0fcdb:19277
+finishConcurrentRender @ chunk-RPCDYKBN.js?v=1ee0fcdb:18805
+performConcurrentWorkOnRoot @ chunk-RPCDYKBN.js?v=1ee0fcdb:18718
+workLoop @ chunk-RPCDYKBN.js?v=1ee0fcdb:197
+flushWork @ chunk-RPCDYKBN.js?v=1ee0fcdb:176
+performWorkUntilDeadline @ chunk-RPCDYKBN.js?v=1ee0fcdb:384
+firebase.ts:106 [2025-08-29T19:23:37.947Z]  @firebase/firestore: Firestore (12.2.0): Uncaught Error in snapshot listener: FirebaseError: [code=permission-denied]: Missing or insufficient permissions.
+defaultLogHandler @ chunk-Q2ZNGHTD.js?v=1ee0fcdb:1211
+error @ chunk-Q2ZNGHTD.js?v=1ee0fcdb:1279
+__PRIVATE_logError @ firebase_firestore.js?v=1ee0fcdb:2626
+error @ firebase_firestore.js?v=1ee0fcdb:15047
+onError @ firebase_firestore.js?v=1ee0fcdb:13870
+__PRIVATE_eventManagerOnWatchError @ firebase_firestore.js?v=1ee0fcdb:13823
+__PRIVATE_removeAndCleanupTarget @ firebase_firestore.js?v=1ee0fcdb:14542
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:14479
+Promise.then
+__PRIVATE_syncEngineRejectListen @ firebase_firestore.js?v=1ee0fcdb:14479
+__PRIVATE_handleTargetError @ firebase_firestore.js?v=1ee0fcdb:13322
+__PRIVATE_onWatchStreamChange @ firebase_firestore.js?v=1ee0fcdb:13323
+onNext @ firebase_firestore.js?v=1ee0fcdb:12981
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12940
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12960
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16051
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16082
+Promise.then
+cc @ firebase_firestore.js?v=1ee0fcdb:16082
+enqueue @ firebase_firestore.js?v=1ee0fcdb:16051
+enqueueAndForget @ firebase_firestore.js?v=1ee0fcdb:16033
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12960
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12940
+u_ @ firebase_firestore.js?v=1ee0fcdb:12553
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12693
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12656
+ab @ firebase_firestore.js?v=1ee0fcdb:950
+F2 @ firebase_firestore.js?v=1ee0fcdb:920
+Z2.ta @ firebase_firestore.js?v=1ee0fcdb:2540
+Rb @ firebase_firestore.js?v=1ee0fcdb:1419
+M2.Y @ firebase_firestore.js?v=1ee0fcdb:1284
+M2.ca @ firebase_firestore.js?v=1ee0fcdb:1215
+ab @ firebase_firestore.js?v=1ee0fcdb:950
+F2 @ firebase_firestore.js?v=1ee0fcdb:920
+Wc @ firebase_firestore.js?v=1ee0fcdb:1954
+h.bb @ firebase_firestore.js?v=1ee0fcdb:1949
+h.Ea @ firebase_firestore.js?v=1ee0fcdb:1946
+Lc @ firebase_firestore.js?v=1ee0fcdb:1846
+h.Pa @ firebase_firestore.js?v=1ee0fcdb:1813
+Promise.then
+Nc @ firebase_firestore.js?v=1ee0fcdb:1804
+h.Sa @ firebase_firestore.js?v=1ee0fcdb:1800
+Promise.then
+h.send @ firebase_firestore.js?v=1ee0fcdb:1781
+h.ea @ firebase_firestore.js?v=1ee0fcdb:1922
+Jb @ firebase_firestore.js?v=1ee0fcdb:1208
+fd @ firebase_firestore.js?v=1ee0fcdb:2341
+h.Fa @ firebase_firestore.js?v=1ee0fcdb:2308
+Da @ firebase_firestore.js?v=1ee0fcdb:669
+Promise.then
+x2 @ firebase_firestore.js?v=1ee0fcdb:663
+ec @ firebase_firestore.js?v=1ee0fcdb:2294
+Rb @ firebase_firestore.js?v=1ee0fcdb:1416
+M2.Y @ firebase_firestore.js?v=1ee0fcdb:1284
+M2.ca @ firebase_firestore.js?v=1ee0fcdb:1215
+ab @ firebase_firestore.js?v=1ee0fcdb:950
+F2 @ firebase_firestore.js?v=1ee0fcdb:920
+Wc @ firebase_firestore.js?v=1ee0fcdb:1954
+h.bb @ firebase_firestore.js?v=1ee0fcdb:1949
+h.Ea @ firebase_firestore.js?v=1ee0fcdb:1946
+Lc @ firebase_firestore.js?v=1ee0fcdb:1846
+h.Pa @ firebase_firestore.js?v=1ee0fcdb:1813
+Promise.then
+Nc @ firebase_firestore.js?v=1ee0fcdb:1804
+h.Sa @ firebase_firestore.js?v=1ee0fcdb:1800
+Promise.then
+h.send @ firebase_firestore.js?v=1ee0fcdb:1781
+h.ea @ firebase_firestore.js?v=1ee0fcdb:1922
+Jb @ firebase_firestore.js?v=1ee0fcdb:1203
+Hb @ firebase_firestore.js?v=1ee0fcdb:1178
+h.Ga @ firebase_firestore.js?v=1ee0fcdb:2228
+Da @ firebase_firestore.js?v=1ee0fcdb:669
+Promise.then
+x2 @ firebase_firestore.js?v=1ee0fcdb:663
+fc @ firebase_firestore.js?v=1ee0fcdb:2172
+h.connect @ firebase_firestore.js?v=1ee0fcdb:2132
+Y2.m @ firebase_firestore.js?v=1ee0fcdb:2488
+Yo @ firebase_firestore.js?v=1ee0fcdb:12650
+send @ firebase_firestore.js?v=1ee0fcdb:12541
+q_ @ firebase_firestore.js?v=1ee0fcdb:12858
+Y_ @ firebase_firestore.js?v=1ee0fcdb:13010
+__PRIVATE_sendWatchRequest @ firebase_firestore.js?v=1ee0fcdb:13266
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:13295
+__PRIVATE_onWatchStreamOpen @ firebase_firestore.js?v=1ee0fcdb:13294
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12936
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12960
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16051
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16082
+Promise.then
+cc @ firebase_firestore.js?v=1ee0fcdb:16082
+enqueue @ firebase_firestore.js?v=1ee0fcdb:16051
+enqueueAndForget @ firebase_firestore.js?v=1ee0fcdb:16033
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12960
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12936
+__ @ firebase_firestore.js?v=1ee0fcdb:12547
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12698
+setTimeout
+T_ @ firebase_firestore.js?v=1ee0fcdb:12697
+j_ @ firebase_firestore.js?v=1ee0fcdb:12969
+G_ @ firebase_firestore.js?v=1ee0fcdb:12933
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12923
+Promise.then
+auth @ firebase_firestore.js?v=1ee0fcdb:12919
+start @ firebase_firestore.js?v=1ee0fcdb:12818
+__PRIVATE_startWatchStream @ firebase_firestore.js?v=1ee0fcdb:13276
+__PRIVATE_remoteStoreListen @ firebase_firestore.js?v=1ee0fcdb:13248
+__PRIVATE_allocateTargetAndMaybeListen @ firebase_firestore.js?v=1ee0fcdb:14313
+await in __PRIVATE_allocateTargetAndMaybeListen
+__PRIVATE_syncEngineListen @ firebase_firestore.js?v=1ee0fcdb:14291
+__PRIVATE_eventManagerListen @ firebase_firestore.js?v=1ee0fcdb:13756
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:17955
+await in (anonymous)
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16051
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16082
+Promise.then
+cc @ firebase_firestore.js?v=1ee0fcdb:16082
+enqueue @ firebase_firestore.js?v=1ee0fcdb:16051
+enqueueAndForget @ firebase_firestore.js?v=1ee0fcdb:16033
+__PRIVATE_firestoreClientListen @ firebase_firestore.js?v=1ee0fcdb:17955
+onSnapshot @ firebase_firestore.js?v=1ee0fcdb:17958
+subscribeToPages @ firebase.ts:106
+(anonymous) @ usePages.tsx:38
+commitHookEffectListMount @ chunk-RPCDYKBN.js?v=1ee0fcdb:16915
+commitPassiveMountOnFiber @ chunk-RPCDYKBN.js?v=1ee0fcdb:18156
+commitPassiveMountEffects_complete @ chunk-RPCDYKBN.js?v=1ee0fcdb:18129
+commitPassiveMountEffects_begin @ chunk-RPCDYKBN.js?v=1ee0fcdb:18119
+commitPassiveMountEffects @ chunk-RPCDYKBN.js?v=1ee0fcdb:18109
+flushPassiveEffectsImpl @ chunk-RPCDYKBN.js?v=1ee0fcdb:19490
+flushPassiveEffects @ chunk-RPCDYKBN.js?v=1ee0fcdb:19447
+performSyncWorkOnRoot @ chunk-RPCDYKBN.js?v=1ee0fcdb:18868
+flushSyncCallbacks @ chunk-RPCDYKBN.js?v=1ee0fcdb:9119
+commitRootImpl @ chunk-RPCDYKBN.js?v=1ee0fcdb:19432
+commitRoot @ chunk-RPCDYKBN.js?v=1ee0fcdb:19277
+finishConcurrentRender @ chunk-RPCDYKBN.js?v=1ee0fcdb:18805
+performConcurrentWorkOnRoot @ chunk-RPCDYKBN.js?v=1ee0fcdb:18718
+workLoop @ chunk-RPCDYKBN.js?v=1ee0fcdb:197
+flushWork @ chunk-RPCDYKBN.js?v=1ee0fcdb:176
+performWorkUntilDeadline @ chunk-RPCDYKBN.js?v=1ee0fcdb:384
+usePages.tsx:61 Error creating page: FirebaseError: Missing or insufficient permissions.
+createNewPage @ usePages.tsx:61
+await in createNewPage
+handleCreatePage @ Dashboard.tsx:20
+callCallback2 @ chunk-RPCDYKBN.js?v=1ee0fcdb:3674
+invokeGuardedCallbackDev @ chunk-RPCDYKBN.js?v=1ee0fcdb:3699
+invokeGuardedCallback @ chunk-RPCDYKBN.js?v=1ee0fcdb:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-RPCDYKBN.js?v=1ee0fcdb:3736
+executeDispatch @ chunk-RPCDYKBN.js?v=1ee0fcdb:7014
+processDispatchQueueItemsInOrder @ chunk-RPCDYKBN.js?v=1ee0fcdb:7034
+processDispatchQueue @ chunk-RPCDYKBN.js?v=1ee0fcdb:7043
+dispatchEventsForPlugins @ chunk-RPCDYKBN.js?v=1ee0fcdb:7051
+(anonymous) @ chunk-RPCDYKBN.js?v=1ee0fcdb:7174
+batchedUpdates$1 @ chunk-RPCDYKBN.js?v=1ee0fcdb:18913
+batchedUpdates @ chunk-RPCDYKBN.js?v=1ee0fcdb:3579
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=1ee0fcdb:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=1ee0fcdb:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=1ee0fcdb:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=1ee0fcdb:5449
+Dashboard.tsx:30 Failed to create page: FirebaseError: Missing or insufficient permissions.
+handleCreatePage @ Dashboard.tsx:30
+await in handleCreatePage
+callCallback2 @ chunk-RPCDYKBN.js?v=1ee0fcdb:3674
+invokeGuardedCallbackDev @ chunk-RPCDYKBN.js?v=1ee0fcdb:3699
+invokeGuardedCallback @ chunk-RPCDYKBN.js?v=1ee0fcdb:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-RPCDYKBN.js?v=1ee0fcdb:3736
+executeDispatch @ chunk-RPCDYKBN.js?v=1ee0fcdb:7014
+processDispatchQueueItemsInOrder @ chunk-RPCDYKBN.js?v=1ee0fcdb:7034
+processDispatchQueue @ chunk-RPCDYKBN.js?v=1ee0fcdb:7043
+dispatchEventsForPlugins @ chunk-RPCDYKBN.js?v=1ee0fcdb:7051
+(anonymous) @ chunk-RPCDYKBN.js?v=1ee0fcdb:7174
+batchedUpdates$1 @ chunk-RPCDYKBN.js?v=1ee0fcdb:18913
+batchedUpdates @ chunk-RPCDYKBN.js?v=1ee0fcdb:3579
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=1ee0fcdb:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=1ee0fcdb:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=1ee0fcdb:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=1ee0fcdb:5449
+firebase.ts:33  POST https://firestore.googleapis.com/google.firestore.v1.Firestore/Write/channel?VER=8&database=projects%2Fdhamma-pages-web%2Fdatabases%2F(default)&gsessionid=YArG3zjJUyHahM7aAiAZtkXIKVo79Qc8Ci3imJDVQk4&SID=UCfI4satOJZa9Rrm3V6pug&RID=15182&TYPE=terminate&zx=9u4ml0a934vu 400 (Bad Request)
+gc @ firebase_firestore.js?v=1ee0fcdb:2147
+Y2.close @ firebase_firestore.js?v=1ee0fcdb:2491
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12692
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12656
+ab @ firebase_firestore.js?v=1ee0fcdb:950
+F2 @ firebase_firestore.js?v=1ee0fcdb:920
+Z2.ta @ firebase_firestore.js?v=1ee0fcdb:2540
+Rb @ firebase_firestore.js?v=1ee0fcdb:1419
+M2.Y @ firebase_firestore.js?v=1ee0fcdb:1284
+M2.ca @ firebase_firestore.js?v=1ee0fcdb:1215
+ab @ firebase_firestore.js?v=1ee0fcdb:950
+F2 @ firebase_firestore.js?v=1ee0fcdb:920
+Wc @ firebase_firestore.js?v=1ee0fcdb:1954
+h.bb @ firebase_firestore.js?v=1ee0fcdb:1949
+h.Ea @ firebase_firestore.js?v=1ee0fcdb:1946
+Lc @ firebase_firestore.js?v=1ee0fcdb:1846
+h.Pa @ firebase_firestore.js?v=1ee0fcdb:1813
+Promise.then
+Nc @ firebase_firestore.js?v=1ee0fcdb:1804
+h.Pa @ firebase_firestore.js?v=1ee0fcdb:1814
+Promise.then
+Nc @ firebase_firestore.js?v=1ee0fcdb:1804
+h.Sa @ firebase_firestore.js?v=1ee0fcdb:1800
+Promise.then
+h.send @ firebase_firestore.js?v=1ee0fcdb:1781
+h.ea @ firebase_firestore.js?v=1ee0fcdb:1922
+Jb @ firebase_firestore.js?v=1ee0fcdb:1208
+fd @ firebase_firestore.js?v=1ee0fcdb:2341
+h.Fa @ firebase_firestore.js?v=1ee0fcdb:2308
+Da @ firebase_firestore.js?v=1ee0fcdb:669
+Promise.then
+x2 @ firebase_firestore.js?v=1ee0fcdb:663
+ec @ firebase_firestore.js?v=1ee0fcdb:2294
+Rb @ firebase_firestore.js?v=1ee0fcdb:1416
+M2.Y @ firebase_firestore.js?v=1ee0fcdb:1284
+M2.ca @ firebase_firestore.js?v=1ee0fcdb:1215
+ab @ firebase_firestore.js?v=1ee0fcdb:950
+F2 @ firebase_firestore.js?v=1ee0fcdb:920
+Wc @ firebase_firestore.js?v=1ee0fcdb:1954
+h.bb @ firebase_firestore.js?v=1ee0fcdb:1949
+h.Ea @ firebase_firestore.js?v=1ee0fcdb:1946
+Lc @ firebase_firestore.js?v=1ee0fcdb:1846
+h.Pa @ firebase_firestore.js?v=1ee0fcdb:1813
+Promise.then
+Nc @ firebase_firestore.js?v=1ee0fcdb:1804
+h.Sa @ firebase_firestore.js?v=1ee0fcdb:1800
+Promise.then
+h.send @ firebase_firestore.js?v=1ee0fcdb:1781
+h.ea @ firebase_firestore.js?v=1ee0fcdb:1922
+Jb @ firebase_firestore.js?v=1ee0fcdb:1203
+Hb @ firebase_firestore.js?v=1ee0fcdb:1178
+h.Ga @ firebase_firestore.js?v=1ee0fcdb:2228
+Da @ firebase_firestore.js?v=1ee0fcdb:669
+Promise.then
+x2 @ firebase_firestore.js?v=1ee0fcdb:663
+fc @ firebase_firestore.js?v=1ee0fcdb:2172
+h.connect @ firebase_firestore.js?v=1ee0fcdb:2132
+Y2.m @ firebase_firestore.js?v=1ee0fcdb:2488
+Yo @ firebase_firestore.js?v=1ee0fcdb:12650
+send @ firebase_firestore.js?v=1ee0fcdb:12541
+q_ @ firebase_firestore.js?v=1ee0fcdb:12858
+ra @ firebase_firestore.js?v=1ee0fcdb:13061
+__PRIVATE_onWriteStreamOpen @ firebase_firestore.js?v=1ee0fcdb:13413
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12936
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12960
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16051
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16082
+Promise.then
+cc @ firebase_firestore.js?v=1ee0fcdb:16082
+enqueue @ firebase_firestore.js?v=1ee0fcdb:16051
+enqueueAndForget @ firebase_firestore.js?v=1ee0fcdb:16033
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12960
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12936
+__ @ firebase_firestore.js?v=1ee0fcdb:12547
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12698
+setTimeout
+T_ @ firebase_firestore.js?v=1ee0fcdb:12697
+j_ @ firebase_firestore.js?v=1ee0fcdb:13040
+G_ @ firebase_firestore.js?v=1ee0fcdb:12933
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:12923
+Promise.then
+auth @ firebase_firestore.js?v=1ee0fcdb:12919
+start @ firebase_firestore.js?v=1ee0fcdb:12818
+start @ firebase_firestore.js?v=1ee0fcdb:13034
+__PRIVATE_startWriteStream @ firebase_firestore.js?v=1ee0fcdb:13410
+__PRIVATE_fillWritePipeline @ firebase_firestore.js?v=1ee0fcdb:13396
+await in __PRIVATE_fillWritePipeline
+__PRIVATE_syncEngineWrite @ firebase_firestore.js?v=1ee0fcdb:14414
+await in __PRIVATE_syncEngineWrite
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:18066
+await in (anonymous)
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16051
+(anonymous) @ firebase_firestore.js?v=1ee0fcdb:16082
+Promise.then
+cc @ firebase_firestore.js?v=1ee0fcdb:16082
+enqueue @ firebase_firestore.js?v=1ee0fcdb:16051
+enqueueAndForget @ firebase_firestore.js?v=1ee0fcdb:16033
+__PRIVATE_firestoreClientWrite @ firebase_firestore.js?v=1ee0fcdb:18066
+executeWrite @ firebase_firestore.js?v=1ee0fcdb:18067
+addDoc @ firebase_firestore.js?v=1ee0fcdb:17915
+createPage @ firebase.ts:33
+createNewPage @ usePages.tsx:55
+handleCreatePage @ Dashboard.tsx:20
+callCallback2 @ chunk-RPCDYKBN.js?v=1ee0fcdb:3674
+invokeGuardedCallbackDev @ chunk-RPCDYKBN.js?v=1ee0fcdb:3699
+invokeGuardedCallback @ chunk-RPCDYKBN.js?v=1ee0fcdb:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-RPCDYKBN.js?v=1ee0fcdb:3736
+executeDispatch @ chunk-RPCDYKBN.js?v=1ee0fcdb:7014
+processDispatchQueueItemsInOrder @ chunk-RPCDYKBN.js?v=1ee0fcdb:7034
+processDispatchQueue @ chunk-RPCDYKBN.js?v=1ee0fcdb:7043
+dispatchEventsForPlugins @ chunk-RPCDYKBN.js?v=1ee0fcdb:7051
+(anonymous) @ chunk-RPCDYKBN.js?v=1ee0fcdb:7174
+batchedUpdates$1 @ chunk-RPCDYKBN.js?v=1ee0fcdb:18913
+batchedUpdates @ chunk-RPCDYKBN.js?v=1ee0fcdb:3579
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=1ee0fcdb:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=1ee0fcdb:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=1ee0fcdb:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=1ee0fcdb:5449
