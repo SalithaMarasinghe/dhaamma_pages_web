@@ -20,6 +20,9 @@ export function EditorPanel({
   onImageUpload,
   uploading,
   onBack,
+  onSave,
+  saveStatus,
+  hasUnsavedChanges,
 }: {
   title: string;
   titleInput: string;
@@ -32,6 +35,9 @@ export function EditorPanel({
   onImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
   uploading: boolean;
   onBack: () => void;
+  onSave: () => Promise<void>;
+  saveStatus: 'idle' | 'saving' | 'saved' | 'error';
+  hasUnsavedChanges: boolean;
 }) {
   // Add keyboard event listener for Ctrl+Alt+A
   useEffect(() => {
@@ -89,6 +95,7 @@ export function EditorPanel({
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [pastedImages, setPastedImages] = useState<Set<string>>(new Set());
   const { user } = useAuth();
   const { toast } = useToast();
 
@@ -128,7 +135,25 @@ export function EditorPanel({
           const tempUrl = URL.createObjectURL(file);
           console.log('Created temp URL:', tempUrl);
           
-          // Insert a temporary image with loading state
+          // Create image element to get dimensions
+          const img = new Image();
+          
+          // Use Promise to handle image loading
+          const imageLoadPromise = new Promise<{width: number, height: number}>((resolve) => {
+            img.onload = () => {
+              // Calculate dimensions maintaining aspect ratio
+              const maxWidth = 800;
+              const aspectRatio = img.width / img.height;
+              const width = Math.min(maxWidth, img.width);
+              const height = width / aspectRatio;
+              resolve({ width: Math.round(width), height: Math.round(height) });
+            };
+            img.src = tempUrl;
+          });
+
+          const { width, height } = await imageLoadPromise;
+
+          // Insert temporary image with loading state
           editor.chain()
             .focus()
             .insertContent({
@@ -136,7 +161,11 @@ export function EditorPanel({
               attrs: {
                 src: tempUrl,
                 'data-loading': 'true',
-                class: 'opacity-50 max-w-full h-auto'
+                'data-temp': 'true',
+                'data-temp-url': tempUrl, // Store temp URL for cleanup
+                width,
+                height,
+                class: 'opacity-50 max-w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700'
               }
             })
             .run();
@@ -148,13 +177,16 @@ export function EditorPanel({
           console.log('Image uploaded, URL:', imageUrl);
           
           if (imageUrl) {
-            // Find the temporary image we just inserted
+            // Track this pasted image
+            setPastedImages(prev => new Set(prev).add(imageUrl));
+            
+            // Find and update the temporary image
             const { doc } = editor.state;
             let imagePos = -1;
-            let imageNode = null;
+            let imageNode: { attrs: any } | null = null;
             
-            doc.descendants((node, pos) => {
-              if (node.type.name === 'image' && node.attrs.src === tempUrl) {
+            doc.descendants((node: any, pos: number) => {
+              if (node.type.name === 'image' && node.attrs['data-temp-url'] === tempUrl) {
                 imagePos = pos;
                 imageNode = node;
                 return false;
@@ -164,6 +196,8 @@ export function EditorPanel({
             
             if (imagePos >= 0 && imageNode) {
               console.log('Found temporary image at position:', imagePos);
+              
+              // Update the image with the final URL while preserving dimensions
               editor.chain()
                 .focus()
                 .command(({ tr }) => {
@@ -171,15 +205,31 @@ export function EditorPanel({
                     src: imageUrl,
                     'data-fullsize': imageUrl,
                     'data-loading': 'false',
-                    class: ''
+                    'data-temp': 'false',
+                    'data-storage-path': imageUrl,
+                    width: imageNode?.attrs?.width,
+                    height: imageNode?.attrs?.height,
+                    class: 'max-w-full h-auto rounded-lg shadow-sm border border-gray-200 dark:border-gray-700'
                   });
                   return true;
                 })
                 .run();
+              
               console.log('Image updated with final URL');
+              
+              // Clean up the temporary URL after a delay to ensure the new image has loaded
+              setTimeout(() => {
+                URL.revokeObjectURL(tempUrl);
+                console.log('Temporary URL revoked');
+              }, 1000);
             } else {
               console.warn('Could not find temporary image in document');
+              // Clean up temp URL
+              URL.revokeObjectURL(tempUrl);
             }
+          } else {
+            // Clean up temp URL if upload failed
+            URL.revokeObjectURL(tempUrl);
           }
         } catch (error) {
           console.error('Error pasting image:', error);
@@ -220,6 +270,80 @@ export function EditorPanel({
     console.log('No image found in clipboard, allowing default paste behavior');
   }, [editor, user?.uid, toast]);
 
+  // Function to check for deleted pasted images and clean them up from storage
+  const cleanupDeletedImages = useCallback(async () => {
+    if (!editor || !user?.uid || pastedImages.size === 0) return;
+
+    // Get all current image URLs in the document
+    const currentImages = new Set<string>();
+    const { doc } = editor.state;
+    
+    doc.descendants((node: any) => {
+      if (node.type.name === 'image' && node.attrs.src) {
+        const src = node.attrs.src;
+        const storagePath = node.attrs['data-storage-path'];
+        if (storagePath) {
+          currentImages.add(storagePath);
+        } else if (src.includes('firebase') || src.includes('storage')) {
+          currentImages.add(src);
+        }
+      }
+    });
+
+    // Find images that were pasted but are no longer in the document
+    const imagesToDelete = Array.from(pastedImages).filter(url => !currentImages.has(url));
+    
+    if (imagesToDelete.length > 0) {
+      console.log('Found deleted pasted images to clean up:', imagesToDelete);
+      
+      // Import deleteImage function dynamically
+      try {
+        const { deleteImage } = await import('@/lib/firebase');
+        
+        // Delete each orphaned image from storage
+        const deletePromises = imagesToDelete.map(async (imageUrl) => {
+          try {
+            // Extract path from Firebase storage URL or use the URL as path
+            let imagePath = imageUrl;
+            if (imageUrl.includes('firebase')) {
+              // Extract the path from Firebase storage URL
+              const urlParts = imageUrl.split('/o/');
+              if (urlParts.length > 1) {
+                imagePath = decodeURIComponent(urlParts[1].split('?')[0]);
+              }
+            }
+            
+            await deleteImage(imagePath);
+            console.log('Deleted orphaned image:', imageUrl);
+          } catch (error) {
+            console.error('Failed to delete orphaned image:', imageUrl, error);
+          }
+        });
+        
+        await Promise.all(deletePromises);
+        
+        // Update the pasted images set to remove deleted ones
+        setPastedImages(prev => {
+          const updated = new Set(prev);
+          imagesToDelete.forEach(url => updated.delete(url));
+          return updated;
+        });
+        
+        if (imagesToDelete.length > 0) {
+          console.log(`Cleaned up ${imagesToDelete.length} orphaned pasted images`);
+        }
+      } catch (error) {
+        console.error('Error importing deleteImage function:', error);
+      }
+    }
+  }, [editor, user?.uid, pastedImages]);
+
+  // Add cleanup to the save process
+  const handleSaveWithCleanup = useCallback(async () => {
+    await cleanupDeletedImages();
+    await onSave();
+  }, [cleanupDeletedImages, onSave]);
+
   // Handle image click in the editor
   const handleEditorClick = useCallback((event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target as HTMLElement;
@@ -256,13 +380,25 @@ export function EditorPanel({
                 />
               </div>
               <div className="text-sm text-muted-foreground whitespace-nowrap">
-                {saving ? 'Saving...' : 'Saved'}
+                {saveStatus === 'saving' ? 'Saving...' : saveStatus === 'saved' ? 'Saved' : ''}
               </div>
             </div>
-            <Button variant="outline" size="sm" onClick={onExportPDF} disabled={!editor}>
-              <i className="fas fa-file-pdf mr-2"></i>
-              Export PDF
-            </Button>
+            <div className="flex items-center space-x-2">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleSaveWithCleanup} 
+                disabled={saving || !hasUnsavedChanges}
+                className={!hasUnsavedChanges ? 'opacity-50' : ''}
+              >
+                <i className="fas fa-save mr-2"></i>
+                Save
+              </Button>
+              <Button variant="outline" size="sm" onClick={onExportPDF} disabled={!editor}>
+                <i className="fas fa-file-pdf mr-2"></i>
+                Export PDF
+              </Button>
+            </div>
           </div>
         </div>
         

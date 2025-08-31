@@ -1,8 +1,7 @@
-import { useRef, useCallback, useState } from 'react';
+import { useRef, useCallback, useState, useEffect } from 'react';
 import { useEditor } from '@/hooks/useEditor';
 import { useLocation } from 'wouter';
 import { EditorPanel } from './EditorPanel';
-import { Button } from './ui/button';
 import { Loader2 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { uploadImage } from '@/lib/firebase';
@@ -19,7 +18,10 @@ export function PageEditor({ pageId }: PageEditorProps) {
     title, 
     setTitle, 
     editor,
-    isPasting
+    isPasting,
+    saveStatus,
+    hasUnsavedChanges,
+    saveContent, // <-- use this instead of savePage
   } = useEditor(pageId);
   
   const { user } = useAuth();
@@ -28,6 +30,10 @@ export function PageEditor({ pageId }: PageEditorProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [titleInput, setTitleInput] = useState(title);
   const [uploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    setTitleInput(title);
+  }, [title]);
 
   const handleTitleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const newTitle = e.target.value;
@@ -140,13 +146,24 @@ export function PageEditor({ pageId }: PageEditorProps) {
     setLocation('/');
   }, [setLocation]);
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <Loader2 className="w-8 h-8 animate-spin" />
-      </div>
-    );
-  }
+  const handleSave = useCallback(async () => {
+    if (!saveContent) return;
+    try {
+      await saveContent();
+      toast({
+        title: 'Saved',
+        description: 'Your changes have been saved.',
+      });
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: 'Save failed',
+        description: 'Failed to save changes. Try again.',
+        variant: 'destructive',
+      });
+    }
+  }, [saveContent, toast]);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -171,6 +188,9 @@ export function PageEditor({ pageId }: PageEditorProps) {
             onImageUpload={handleImageUpload}
             uploading={isPasting || uploading}
             onBack={handleBack}
+            onSave={handleSave} // <-- pass to EditorPanel
+            saveStatus={saveStatus}
+            hasUnsavedChanges={hasUnsavedChanges}
           />
         )}
       </div>
