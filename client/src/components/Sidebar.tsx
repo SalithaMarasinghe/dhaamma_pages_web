@@ -17,20 +17,10 @@ export function Sidebar({ isOpen, onClose, onCreatePage }: SidebarProps) {
 
   return (
     <aside className={cn(
-      "flex flex-col w-64 bg-card border-r border-border transition-all duration-200",
+      "flex flex-col w-64 bg-card border-r border-border transition-all duration-200 pt-4",
       "md:flex", // Always show on desktop
       isOpen ? "flex" : "hidden md:flex" // Show/hide on mobile based on isOpen
     )}>
-      <div className="p-4">
-        <Button 
-          onClick={onCreatePage}
-          className="w-full flex items-center gap-3 h-11 font-medium"
-          data-testid="button-create-page-sidebar"
-        >
-          <i className="fas fa-plus"></i>
-          New Page
-        </Button>
-      </div>
 
       <nav className="flex-1 px-4 pb-4">
         <div className="space-y-1">

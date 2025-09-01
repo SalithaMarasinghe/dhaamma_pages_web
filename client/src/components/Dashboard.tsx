@@ -8,26 +8,46 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useLocation } from 'wouter';
 import { Skeleton } from '@/components/ui/skeleton';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export function Dashboard() {
   const { pages, loading, searchTerm, setSearchTerm, createNewPage, deletePageData } = usePages();
   const { user } = useAuth();
   const [, setLocation] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
+  const [newPageTitle, setNewPageTitle] = useState('');
+  const [isCreating, setIsCreating] = useState(false);
 
-  const handleCreatePage = async () => {
+  const handleCreatePage = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    if (!newPageTitle.trim()) return;
+    
     try {
+      setIsCreating(true);
       const pageId = await createNewPage({
-        title: 'Untitled',
+        title: newPageTitle.trim(),
         content: { type: 'doc', content: [] }
       });
       
       // Navigate to the new page only if we got a valid pageId
       if (pageId) {
+        setNewPageTitle('');
+        setIsCreateDialogOpen(false);
         setLocation(`/editor/${pageId}`);
       }
     } catch (error) {
       console.error('Failed to create page:', error);
+    } finally {
+      setIsCreating(false);
     }
   };
 
@@ -93,14 +113,48 @@ export function Dashboard() {
 
               {/* Quick Actions */}
               <div className="flex flex-wrap gap-3 mb-8">
-                <Button 
-                  onClick={handleCreatePage}
-                  className="flex items-center gap-2 h-10"
-                  data-testid="button-create-page"
-                >
-                  <i className="fas fa-plus"></i>
-                  New Page
-                </Button>
+                <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button 
+                      className="flex items-center gap-2 h-10"
+                      data-testid="button-create-page"
+                    >
+                      <i className="fas fa-plus"></i>
+                      <span>New Page</span>
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Create New Page</DialogTitle>
+                    </DialogHeader>
+                    <form onSubmit={handleCreatePage} className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="pageTitle">Page Title</Label>
+                        <Input
+                          id="pageTitle"
+                          value={newPageTitle}
+                          onChange={(e) => setNewPageTitle(e.target.value)}
+                          placeholder="Enter page title"
+                          autoFocus
+                          required
+                        />
+                      </div>
+                      <div className="flex justify-end gap-2">
+                        <Button 
+                          type="button" 
+                          variant="outline" 
+                          onClick={() => setIsCreateDialogOpen(false)}
+                          disabled={isCreating}
+                        >
+                          Cancel
+                        </Button>
+                        <Button type="submit" disabled={!newPageTitle.trim() || isCreating}>
+                          {isCreating ? 'Creating...' : 'Create Page'}
+                        </Button>
+                      </div>
+                    </form>
+                  </DialogContent>
+                </Dialog>
                 <Button 
                   variant="secondary"
                   className="flex items-center gap-2 h-10"
@@ -129,24 +183,12 @@ export function Dashboard() {
                     onDelete={handleDeletePage}
                   />
                 ))}
-
-                {/* Empty State / Add New Page Card */}
-                {!searchTerm && (
-                  <Card 
-                    className="page-card bg-muted/30 border-2 border-dashed border-border cursor-pointer group hover:border-primary/50 transition-all hover:-translate-y-1"
-                    onClick={handleCreatePage}
-                    data-testid="card-create-new-page"
-                  >
-                    <CardContent className="p-6">
-                      <div className="flex flex-col items-center justify-center text-center h-32">
-                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                          <i className="fas fa-plus text-primary text-lg"></i>
-                        </div>
-                        <p className="text-sm font-medium text-foreground mb-1">Create New Page</p>
-                        <p className="text-xs text-muted-foreground">Start writing your thoughts</p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                
+                {/* Empty State */}
+                {filteredPages.length === 0 && !searchTerm && (
+                  <div className="col-span-full text-center py-12">
+                    <p className="text-muted-foreground">No pages yet. Create your first page using the button above.</p>
+                  </div>
                 )}
               </div>
 

@@ -95,7 +95,6 @@ export function EditorPanel({
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
-  const [pastedImages, setPastedImages] = useState<Set<string>>(new Set());
   const { user } = useAuth();
   const { toast } = useToast();
 
@@ -177,9 +176,6 @@ export function EditorPanel({
           console.log('Image uploaded, URL:', imageUrl);
           
           if (imageUrl) {
-            // Track this pasted image
-            setPastedImages(prev => new Set(prev).add(imageUrl));
-            
             // Find and update the temporary image
             const { doc } = editor.state;
             let imagePos = -1;
@@ -270,80 +266,6 @@ export function EditorPanel({
     console.log('No image found in clipboard, allowing default paste behavior');
   }, [editor, user?.uid, toast]);
 
-  // Function to check for deleted pasted images and clean them up from storage
-  const cleanupDeletedImages = useCallback(async () => {
-    if (!editor || !user?.uid || pastedImages.size === 0) return;
-
-    // Get all current image URLs in the document
-    const currentImages = new Set<string>();
-    const { doc } = editor.state;
-    
-    doc.descendants((node: any) => {
-      if (node.type.name === 'image' && node.attrs.src) {
-        const src = node.attrs.src;
-        const storagePath = node.attrs['data-storage-path'];
-        if (storagePath) {
-          currentImages.add(storagePath);
-        } else if (src.includes('firebase') || src.includes('storage')) {
-          currentImages.add(src);
-        }
-      }
-    });
-
-    // Find images that were pasted but are no longer in the document
-    const imagesToDelete = Array.from(pastedImages).filter(url => !currentImages.has(url));
-    
-    if (imagesToDelete.length > 0) {
-      console.log('Found deleted pasted images to clean up:', imagesToDelete);
-      
-      // Import deleteImage function dynamically
-      try {
-        const { deleteImage } = await import('@/lib/firebase');
-        
-        // Delete each orphaned image from storage
-        const deletePromises = imagesToDelete.map(async (imageUrl) => {
-          try {
-            // Extract path from Firebase storage URL or use the URL as path
-            let imagePath = imageUrl;
-            if (imageUrl.includes('firebase')) {
-              // Extract the path from Firebase storage URL
-              const urlParts = imageUrl.split('/o/');
-              if (urlParts.length > 1) {
-                imagePath = decodeURIComponent(urlParts[1].split('?')[0]);
-              }
-            }
-            
-            await deleteImage(imagePath);
-            console.log('Deleted orphaned image:', imageUrl);
-          } catch (error) {
-            console.error('Failed to delete orphaned image:', imageUrl, error);
-          }
-        });
-        
-        await Promise.all(deletePromises);
-        
-        // Update the pasted images set to remove deleted ones
-        setPastedImages(prev => {
-          const updated = new Set(prev);
-          imagesToDelete.forEach(url => updated.delete(url));
-          return updated;
-        });
-        
-        if (imagesToDelete.length > 0) {
-          console.log(`Cleaned up ${imagesToDelete.length} orphaned pasted images`);
-        }
-      } catch (error) {
-        console.error('Error importing deleteImage function:', error);
-      }
-    }
-  }, [editor, user?.uid, pastedImages]);
-
-  // Add cleanup to the save process
-  const handleSaveWithCleanup = useCallback(async () => {
-    await cleanupDeletedImages();
-    await onSave();
-  }, [cleanupDeletedImages, onSave]);
-
   // Handle image click in the editor
   const handleEditorClick = useCallback((event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target as HTMLElement;
@@ -387,7 +309,7 @@ export function EditorPanel({
               <Button 
                 variant="outline" 
                 size="sm" 
-                onClick={handleSaveWithCleanup} 
+                onClick={onSave} 
                 disabled={saving || !hasUnsavedChanges}
                 className={!hasUnsavedChanges ? 'opacity-50' : ''}
               >
